@@ -31,7 +31,7 @@ if (isDeveloping) {
   app.use(webpackHotMiddleware(compiler))
 
   app.get('/ofx', function(req, res) {
-    res.send(ofx.Booya()) // try res.json() if getList() returns an object or array
+    res.send(ofx.Ofx()) // try res.json() if getList() returns an object or array
   })
 
   app.get('*', function response(req, res) {

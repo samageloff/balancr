@@ -19,17 +19,17 @@ var Ofx = function() {
     , appVer: process.env.APPVER
   })
 
-  return bank.getStatement({start:20160818, end:20160818}, function(err, res) {
+  bank.getStatement({start:20160818, end:20160818}, function(err, res) {
     if(err) console.log(err)
-    var balance
+    console.log(JSON.stringify(res))
 
-    parseString(res.xml, {trim: true}, function (err, result) {
-      balance = result.OFX.BANKMSGSRSV1[0].STMTTRNRS[0].STMTRS[0].LEDGERBAL[0].BALAMT[0]
-      console.log(balance, result.OFX.BANKMSGSRSV1[0].STMTTRNRS[0].STMTRS[0].BANKTRANLIST[0].STMTTRN)
-    })
-
-    return balance
+    // parseString(res.xml, {trim: true}, function (err, result) {
+    //   if(err) console.log(err)
+    //   console.log(JSON.stringify(result.OFX))
+    //   // balance = result.OFX.BANKMSGSRSV1[0].STMTTRNRS[0].STMTRS[0].LEDGERBAL[0].BALAMT[0]
+    //   // console.log(balance, result.OFX.BANKMSGSRSV1[0].STMTTRNRS[0].STMTRS[0].BANKTRANLIST[0].STMTTRN)
+    // })
   })
 }
 
-exports.Booya = Ofx
+exports.Ofx = Ofx
