@@ -31,7 +31,11 @@ if (isDeveloping) {
   app.use(webpackHotMiddleware(compiler))
 
   app.get('/ofx', function(req, res) {
-    res.send(ofx.Ofx()) // try res.json() if getList() returns an object or array
+    let test = ofx.Ofx()
+    console.log(test)
+
+    res.setHeader('Content-Type', 'application/json');
+    res.json({'id': 1,'name':'Matt', 'band':'BBQ Brawlers'})
   })
 
   app.get('*', function response(req, res) {
